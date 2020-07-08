@@ -13,11 +13,10 @@ Download package with below command.
 Run the PreFlight application with below command.  
 `npm run preflight`
 
-### Login to PreFlight
-Before running tests, you need to login Preflight. We will keep your access token in a secure place in your operating system.
-`preflight login --clientId='<client-id>' --clientSecret='<client-secret>'`
-
 ### Run Test on PreFlight
+Client id and client secret are required parameters. This is the example run command.    
+`preflight run --clientId='<client-id>' --clientSecret='<client-secret>' --testId='<test-id>'`
+
 Run your PreFlight tests with below command.    
 `preflight run --testId='<test-id>'` 
 
@@ -33,5 +32,4 @@ These are other parameters.
 `-c, --noScreenshot`      Don't capture screenshots.      
 `-w, --noWaitResult`      Don't wait tests results.   
 
-You can run your tests without a login step. Just pass client id and client secret to the run script. We will log in to PreFlight for you.
-`preflight run --clientId='<client-id>' --clientSecret='<client-secret>' --testId='<test-id>'` 
+ 

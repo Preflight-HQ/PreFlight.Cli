@@ -1,6 +1,6 @@
 import { TestRunRequest } from './model/testrunrequest';
 import { PreFlightService } from './service/preflight.service';
-const keytar = require('keytar');
+//const keytar = require('keytar');
 
 const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 
@@ -19,7 +19,7 @@ export class Executor {
 
             var service = new PreFlightService(request);
             var response = await service.getToken();
-            keytar.setPassword("PreFlight", "AccessToken", response.access_token)   
+            //keytar.setPassword("PreFlight", "AccessToken", response.access_token)   
         }
         catch (err) {
             throw err;
@@ -45,10 +45,11 @@ export class Executor {
             if(request.clientId && request.clientSecret){
                 accessToken = (await service.getToken()).access_token;
             }
+            //else{
+            //    accessToken = await keytar.getPassword("PreFlight", "AccessToken") ?? "";
+            //}
+            //if(!accessToken){
             else{
-                accessToken = await keytar.getPassword("PreFlight", "AccessToken") ?? "";
-            }
-            if(!accessToken){
                 throw new Error("Please provide client id and client secret or call login function.");
             }
             var response = await service.runTest(accessToken);

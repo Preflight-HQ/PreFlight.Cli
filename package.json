@@ -1,6 +1,6 @@
 {
   "name": "preflight-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "PreFlight is a code-free automated UI testing tool. This package allows you to run your PreFlight tests.",
   "scripts": {
     "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
@@ -38,7 +38,6 @@
     "clear": "^0.1.0",
     "commander": "^2.20.3",
     "figlet": "^1.4.0",
-    "keytar": "^6.0.1",
     "path": "^0.12.7"
   },
   "devDependencies": {

@@ -15,6 +15,7 @@ console.log(
 
 program.version('0.0.1')
 
+/*
 program
   .command('login')
   .description('Login to Preflight')
@@ -25,6 +26,7 @@ program
     let executor = new Executor(opts);
     await executor.login();
 });
+*/
 
 program
   .command('run')
