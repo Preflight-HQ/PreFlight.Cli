@@ -1,7 +1,7 @@
 {
-  "name": "preflight",
+  "name": "preflight-cli",
   "version": "0.0.1",
-  "description": "PreFlight is a code-free automated ui testing tool. This package allows you to run your PreFlight tests.",
+  "description": "PreFlight is a code-free automated UI testing tool. This package allows you to run your PreFlight tests.",
   "scripts": {
     "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "preflight": "npm run build && npm run test",
@@ -25,12 +25,12 @@
   "author": "mustafa@preflight.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Preflight-HQ/PreFlight.Cli.git"
+    "url": "git+https://github.com/Preflight-HQ/PreFlight.Cli.git"
   },
   "license": "MIT",
   "main": "./lib/index.js",
   "bin": {
-    "preflight": "./lib/index.js"
+    "preflight": "lib/index.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -46,5 +46,11 @@
     "nodemon": "^1.18.7",
     "ts-node": "^7.0.1",
     "typescript": "^3.1.6"
+  },
+  "bugs": {
+    "url": "https://github.com/Preflight-HQ/PreFlight.Cli/issues"
+  },
+  "directories": {
+    "lib": "lib"
   }
 }
