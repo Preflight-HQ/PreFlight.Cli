@@ -2,8 +2,12 @@
 PreFlight is a code-free automated UI testing tool. This package allows you to run your PreFlight tests.
 
 ## Usage
-### Prerequsite
+### Prerequisite
 Before you start, you need to get a client id and client secret from [Account Settings > API](https://app.preflight.com/account/api) under your PreFlight account.
+
+### Install
+Download package with below command.   
+`npm install preflight`
 
 ### Run
 Run the PreFlight application with below command.  
@@ -14,7 +18,7 @@ Before running tests, you need to login Preflight. We will keep your access toke
 `preflight login --clientId='<client-id>' --clientSecret='<client-secret>'`
 
 ### Run Test on PreFlight
-Run your PreFlight tests with below command. 
+Run your PreFlight tests with below command.    
 `preflight run --testId='<test-id>'` 
 
 These are other parameters.
