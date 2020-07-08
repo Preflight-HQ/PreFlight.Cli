@@ -1,0 +1,50 @@
+{
+  "name": "preflight",
+  "version": "0.0.1",
+  "description": "PreFlight is a code-free automated ui testing tool. This package allows you to run your PreFlight tests.",
+  "scripts": {
+    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "preflight": "npm run build && npm run test",
+    "build": "tsc -p .",
+    "test": "npm i -g  && preflight",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install"
+  },
+  "keywords": [
+    "Automated Testing",
+    "Integration Testing",
+    "UI Testing",
+    "Browser Testing",
+    "Quality Assurance",
+    "Continuous Integration",
+    "Continuous Delivery",
+    "DevOps",
+    "Build",
+    "Release"
+  ],
+  "homepage": "https://preflight.com/",
+  "author": "mustafa@preflight.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Preflight-HQ/PreFlight.Cli.git"
+  },
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "bin": {
+    "preflight": "./lib/index.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "chalk": "^2.4.2",
+    "clear": "^0.1.0",
+    "commander": "^2.20.3",
+    "figlet": "^1.4.0",
+    "keytar": "^6.0.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/node": "^10.17.26",
+    "nodemon": "^1.18.7",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.6"
+  }
+}
