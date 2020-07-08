@@ -7,7 +7,7 @@ Before you start, you need to get a client id and client secret from [Account Se
 
 ### Install
 Download package with below command.   
-`npm install preflight`
+`npm install preflight-cli`
 
 ### Run
 Run the PreFlight application with below command.  

@@ -1,6 +1,6 @@
 import { TestRunRequest } from './model/testrunrequest';
 import { PreFlightService } from './service/preflight.service';
-import keytar from 'keytar';
+const keytar = require('keytar');
 
 const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 
