@@ -4,10 +4,10 @@ export declare class TestRun {
 }
 export declare class TestRunResult {
     status: string;
-    videoUrl: string;
     platform: string;
     browser: string;
     width: number;
     height: number;
+    videoUrl: string;
     errorDetails: any;
 }

@@ -1,6 +1,5 @@
 import { TestRunRequest } from './model/testrunrequest';
 import { PreFlightService } from './service/preflight.service';
-//const keytar = require('keytar');
 
 const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 
@@ -9,21 +8,6 @@ export class Executor {
 
     constructor(options: any) {
         this.options = options
-    }
-
-    public async login(){
-        try {
-            var request = new TestRunRequest()
-            request.clientId = this.options.clientId;
-            request.clientSecret = this.options.clientSecret;
-
-            var service = new PreFlightService(request);
-            var response = await service.getToken();
-            //keytar.setPassword("PreFlight", "AccessToken", response.access_token)   
-        }
-        catch (err) {
-            throw err;
-        }
     }
 
     public async run(){
@@ -41,44 +25,39 @@ export class Executor {
 
             var service = new PreFlightService(request);
 
-            var accessToken = '';
-            if(request.clientId && request.clientSecret){
-                accessToken = (await service.getToken()).access_token;
+            if(!request.clientId && !request.clientSecret){
+                console.log("Please provide client id and client secret");
+                return process.exit(1);
             }
-            //else{
-            //    accessToken = await keytar.getPassword("PreFlight", "AccessToken") ?? "";
-            //}
-            //if(!accessToken){
-            else{
-                throw new Error("Please provide client id and client secret or call login function.");
-            }
+
+            var accessToken = (await service.getToken()).access_token;
             var response = await service.runTest(accessToken);
 
             if (response.testRunId == '') {
-                var error = new Error('Error occured while queuing test group')
-                throw error;
+                console.log('Error occured while queuing test group');
+                return process.exit(1);
             }
 
             if(request.waitResults){
                 while(true){
                     var testResults = await service.checkStatus(response.testRunId, accessToken);
-                    console.log(testResults);
+                    console.log(JSON.stringify(testResults));
                     
                     if(testResults.results == null || testResults.results.length == 0)
                         break;
                     
                     if(testResults.results.filter(c => c.status == "Failed").length > 0){
-                        var error = new Error('Test(s) failed.')
-                        throw error;
+                        console.log('Test(s) failed.');
+                        return process.exit(1);
                     }
                     else if(testResults.results.filter(c => c.status == "Queued" || c.status == "Running").length > 0){
                         console.log("Waiting for the tests to be completed.");
                     }
                     else{
-                        console.log("Tests successfully completed.")
+                        console.log("Tests successfully completed.");
                         break;
                     }
-                    await delay(5000)
+                    await delay(5000);
                 }
             }
             else{
@@ -86,7 +65,8 @@ export class Executor {
             }    
         }
         catch (err) {
-            throw err;
+            console.log(err);
+            return process.exit(1);
         }
     }
 }
