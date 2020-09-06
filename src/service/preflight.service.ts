@@ -70,12 +70,11 @@ export class PreFlightService {
                 "sizes": sizes
             }
 
-            var requestPath = "";
+            var requestPath = "/Run";
             if(this.request.testId){
                 requestPath = "/"+ this.request.testId +"/Run";
             }
             else if(this.request.groupId){
-                requestPath = "/Run";
                 body.groupId = this.request.groupId;
             }
             
